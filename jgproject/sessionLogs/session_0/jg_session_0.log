@@ -1,0 +1,613 @@
+# ----------------------------------------
+# Jasper Version Info
+# tool      : Jasper 2024.06
+# platform  : Linux 4.18.0-553.89.1.el8_10.x86_64
+# version   : 2024.06p002 64 bits
+# build date: 2024.09.02 16:28:38 UTC
+# ----------------------------------------
+# started   : 2025-12-16 23:30:10 EST
+# hostname  : cadpc02.(none)
+# pid       : 53640
+# arguments : '-label' 'session_0' '-console' '//127.0.0.1:42269' '-style' 'windows' '-data' 'AAAAonicY2RgYLCp////PwMYMD6A0Aw2jAyoAMRnQhUJbEChGRhYYZphSkAaOBh0GdIYChjKgGw9hiSGSiA7kaEYCOOBYqkMRQyZQPlMhmSgaAmQzmfIA6orAfJzwGYAAAbjEdY=' '-proj' '/homes/user/stud/fall25/ww2766/CSEEE6863/6863-RISCV-FV/jgproject/sessionLogs/session_0' '-init' '-hidden' '/homes/user/stud/fall25/ww2766/CSEEE6863/6863-RISCV-FV/jgproject/.tmp/.initCmds.tcl' 'bypass_verification.tcl'
+
+Any disclosure about the Cadence Design Systems software or its use
+model to any third party violates the written Non-Disclosure Agreement
+between Cadence Design Systems, Inc. and the customer.
+
+THIS SOFTWARE CONTAINS CONFIDENTIAL INFORMATION AND TRADE SECRETS OF
+CADENCE DESIGN SYSTEMS, INC. USE, DISCLOSURE, OR REPRODUCTION IS
+PROHIBITED WITHOUT THE PRIOR EXPRESS WRITTEN PERMISSION OF CADENCE
+DESIGN SYSTEMS, INC.
+
+Copyright (C) 2000-2024 Cadence Design Systems, Inc. All Rights
+Reserved.  Unpublished -- rights reserved under the copyright laws of
+the United States.
+
+This product includes software developed by others and redistributed
+according to license agreement. See doc/third_party_readme.txt for
+further details.
+
+RESTRICTED RIGHTS LEGEND
+
+Use, duplication, or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c) (1) (ii) of the Rights in
+Technical Data and Computer Software clause at DFARS 252.227-7013 or
+subparagraphs (c) (1) and (2) of Commercial Computer Software -- Restricted
+Rights at 48 CFR 52.227-19, as applicable.
+
+
+                          Cadence Design Systems, Inc.
+                          2655 Seely Avenue
+                          San Jose, CA 95134
+                          Phone: 408.943.1234
+
+For technical assistance visit http://support.cadence.com.
+
+Jasper Apps Analysis Session - /homes/user/stud/fall25/ww2766/CSEEE6863/6863-RISCV-FV/jgproject/sessionLogs/session_0
+
+INFO: successfully checked out licenses "jasper_interactive" and "jasper_fao".
+INFO: reading configuration file "/user/stud/fall25/ww2766/.config/cadence/jasper.conf".
+% # ----------------------------------------
+% #  Copyright (c) 2017 Cadence Design Systems, Inc. All Rights
+% #  Reserved.  Unpublished -- rights reserved under the copyright 
+% #  laws of the United States.
+% # ----------------------------------------
+% 
+% # Analyze design under verification files
+% set ROOT_PATH      ./
+./
+% set RTL_PATH       ${ROOT_PATH}/src
+.//src
+% set PROP_PATH      ${ROOT_PATH}/properties
+.//properties
+% 
+% # Analyze the complete RTL needed for bypass verification
+% set RTL_FILES [lsort [glob -nocomplain ${RTL_PATH}/*.v]]
+./src/ALU.v ./src/RISC_V_Core.v ./src/bram.v ./src/bsram.v ./src/control_unit.v ./src/d_mem_interface.v ./src/decode.v ./src/decode_pipe.v ./src/execute.v ./src/execute_pipe.v ./src/fetch.v ./src/fetch_pipe.v ./src/i_mem_interface.v ./src/memory.v ./src/memory_pipe.v ./src/regFile.v ./src/stallControl.v ./src/writeback.v
+% if {[llength $RTL_FILES] == 0} {
+  error "No RTL files found under ${RTL_PATH}"
+}
+% analyze -sv $RTL_FILES
+WARNING (WCD032): Passing arguments to "analyze" as lists has been deprecated.
+    For message help, type "help -message WCD032".
+[-- (VERI-1482)] Analyzing Verilog file '/tools/cadence/jasper_2024.06p002/lib/verilog/packages/std/std.sv' into library 'std'
+[-- (VERI-1482)] Analyzing Verilog file './src/ALU.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/RISC_V_Core.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/bram.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/bsram.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/control_unit.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/d_mem_interface.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/decode.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/decode_pipe.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/execute.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/execute_pipe.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/fetch.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/fetch_pipe.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/i_mem_interface.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/memory.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/memory_pipe.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/regFile.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/stallControl.v'
+[INFO (VERI-2561)] ./src/stallControl.v(70): undeclared symbol 'rs1_stall_detected', assumed default net type 'wire'
+[INFO (VERI-2561)] ./src/stallControl.v(74): undeclared symbol 'rs2_stall_detected', assumed default net type 'wire'
+[-- (VERI-1482)] Analyzing Verilog file './src/writeback.v'
+% 
+% # Analyze property bindings (includes individual .sva files)
+% analyze -sva \
+  ${PROP_PATH}/binding.sva
+[-- (VERI-1482)] Analyzing Verilog file './/properties/binding.sva'
+[INFO (VERI-1328)] .//properties/binding.sva(5): analyzing included file './/properties/stall_bypass_properties.sv'
+[INFO (VERI-1328)] .//properties/binding.sva(6): analyzing included file './/properties/decode_bypass_properties.sv'
+% 
+% # Elaborate the full core so both decode and stall units are instantiated
+% elaborate -top RISC_V_Core
+INFO (ISW003): Top module name is "RISC_V_Core".
+[INFO (HIER-8002)] ./src/RISC_V_Core.v(424): Disabling old hierarchical reference handler
+[INFO (VERI-1018)] ./src/bram.v(24): compiling module 'BRAM:(ADDR_WIDTH=12,INIT_FILE="../software/applications/binaries/mandelbrot.vmh")'
+[INFO (VERI-2571)] ./src/bram.v(46): extracting RAM for identifier 'ram'
+[WARN (VERI-9033)] ./src/bram.v(46): array ram (size 131072) automatically BLACK-BOXED. Use the "elaborate -bbox_a" command to prevent automatic black-boxing.
+[WARN (VERI-1060)] ./src/bram.v(62): 'initial' construct is ignored
+[INFO (VERI-1018)] ./src/i_mem_interface.v(23): compiling module 'i_mem_interface:(ADDRESS_BITS=12,PROGRAM="../software/applications/binaries/mandelbrot.vmh")'
+[WARN (VERI-1209)] ./src/i_mem_interface.v(64): expression size 32 truncated to fit in target size 12
+[WARN (VERI-1142)] ./src/i_mem_interface.v(73): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/i_mem_interface.v(74): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/i_mem_interface.v(75): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/i_mem_interface.v(76): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/i_mem_interface.v(77): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/i_mem_interface.v(78): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/i_mem_interface.v(79): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/i_mem_interface.v(80): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/i_mem_interface.v(81): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/i_mem_interface.v(82): system task 'display' is ignored for synthesis
+[INFO (VERI-1018)] ./src/fetch.v(23): compiling module 'fetch_unit:(ADDRESS_BITS=12,PROGRAM="../software/applications/binaries/mandelbrot.vmh",PRINT_CYCLES_MIN=0,PRINT_CYCLES_MAX=15)'
+[WARN (VERI-1209)] ./src/fetch.v(81): expression size 32 truncated to fit in target size 12
+[WARN (VERI-1209)] ./src/fetch.v(130): expression size 32 truncated to fit in target size 12
+[WARN (VERI-1142)] ./src/fetch.v(141): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(142): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(143): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(144): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(145): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(146): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(147): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(148): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(149): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(150): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(151): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(152): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(153): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(154): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(155): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/fetch.v(156): system task 'display' is ignored for synthesis
+[INFO (VERI-1018)] ./src/fetch_pipe.v(25): compiling module 'fetch_pipe_unit:(ADDRESS_BITS=12)'
+[INFO (VERI-1018)] ./src/regFile.v(24): compiling module 'regFile'
+[INFO (VERI-1018)] .//properties/decode_bypass_properties.sv(2): compiling module 'decode_bypass_properties'
+[WARN (VERI-1796)] .//properties/decode_bypass_properties.sv(21): system function call isunknown with non-constant argument is not supported for synthesis
+[INFO (VERI-1018)] ./src/decode.v(23): compiling module 'decode_unit:(ADDRESS_BITS=12,PRINT_CYCLES_MIN=0,PRINT_CYCLES_MAX=15)'
+[WARN (VERI-1209)] ./src/decode.v(99): expression size 32 truncated to fit in target size 12
+[WARN (VERI-1209)] ./src/decode.v(111): expression size 32 truncated to fit in target size 12
+[WARN (VERI-1142)] ./src/decode.v(141): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(142): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(143): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(144): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(145): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(146): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(147): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(148): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(149): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(150): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(151): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(152): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(153): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(154): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(155): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/decode.v(156): system task 'display' is ignored for synthesis
+[INFO (VERI-1018)] .//properties/stall_bypass_properties.sv(2): compiling module 'stall_bypass_properties'
+[WARN (VERI-1796)] .//properties/stall_bypass_properties.sv(41): system function call isunknown with non-constant argument is not supported for synthesis
+[INFO (VERI-1018)] ./src/stallControl.v(29): compiling module 'stall_and_bypass_control_unit'
+[INFO (VERI-1018)] ./src/control_unit.v(29): compiling module 'control_unit:(PRINT_CYCLES_MIN=0,PRINT_CYCLES_MAX=15)'
+[WARN (VERI-1209)] ./src/control_unit.v(72): expression size 32 truncated to fit in target size 1
+[WARN (VERI-1209)] ./src/control_unit.v(73): expression size 32 truncated to fit in target size 1
+[WARN (VERI-1209)] ./src/control_unit.v(74): expression size 32 truncated to fit in target size 1
+[WARN (VERI-1209)] ./src/control_unit.v(75): expression size 32 truncated to fit in target size 1
+[WARN (VERI-1209)] ./src/control_unit.v(76): expression size 32 truncated to fit in target size 1
+[WARN (VERI-1209)] ./src/control_unit.v(84): expression size 32 truncated to fit in target size 3
+[WARN (VERI-1209)] ./src/control_unit.v(88): expression size 32 truncated to fit in target size 2
+[WARN (VERI-1209)] ./src/control_unit.v(92): expression size 32 truncated to fit in target size 1
+[WARN (VERI-1209)] ./src/control_unit.v(96): expression size 32 truncated to fit in target size 2
+[WARN (VERI-1209)] ./src/control_unit.v(100): expression size 32 truncated to fit in target size 2
+[WARN (VERI-1142)] ./src/control_unit.v(107): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(108): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(109): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(110): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(111): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(112): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(113): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(114): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(115): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(116): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(117): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(118): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/control_unit.v(119): system task 'display' is ignored for synthesis
+[INFO (VERI-1018)] ./src/decode_pipe.v(24): compiling module 'decode_pipe_unit:(ADDRESS_BITS=12)'
+[INFO (VERI-1018)] ./src/ALU.v(23): compiling module 'ALU'
+[INFO (VERI-1018)] ./src/execute.v(24): compiling module 'execution_unit:(ADDRESS_BITS=12,PRINT_CYCLES_MIN=0,PRINT_CYCLES_MAX=15)'
+[WARN (VERI-1209)] ./src/execute.v(91): expression size 32 truncated to fit in target size 1
+[WARN (VERI-1209)] ./src/execute.v(103): expression size 32 truncated to fit in target size 12
+[WARN (VERI-1142)] ./src/execute.v(120): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(121): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(122): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(123): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(124): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(125): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(126): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(127): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(128): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(129): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(130): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/execute.v(131): system task 'display' is ignored for synthesis
+[INFO (VERI-1018)] ./src/execute_pipe.v(25): compiling module 'execute_pipe_unit:(ADDRESS_BITS=12)'
+[INFO (VERI-1018)] ./src/bsram.v(26): compiling module 'BSRAM:(ADDR_WIDTH=12)'
+[INFO (VERI-2571)] ./src/bsram.v(47): extracting RAM for identifier 'sram'
+[WARN (VERI-9033)] ./src/bsram.v(47): array sram (size 131072) automatically BLACK-BOXED. Use the "elaborate -bbox_a" command to prevent automatic black-boxing.
+[WARN (VERI-1060)] ./src/bsram.v(55): 'initial' construct is ignored
+[WARN (VERI-1142)] ./src/bsram.v(67): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/bsram.v(68): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/bsram.v(69): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/bsram.v(70): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/bsram.v(71): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/bsram.v(72): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/bsram.v(73): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/bsram.v(74): system task 'display' is ignored for synthesis
+[INFO (VERI-1018)] ./src/d_mem_interface.v(23): compiling module 'd_mem_interface:(ADDRESS_BITS=12)'
+[WARN (VERI-1142)] ./src/d_mem_interface.v(82): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/d_mem_interface.v(84): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/d_mem_interface.v(85): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/d_mem_interface.v(86): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/d_mem_interface.v(87): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/d_mem_interface.v(88): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/d_mem_interface.v(89): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/d_mem_interface.v(90): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/d_mem_interface.v(91): system task 'display' is ignored for synthesis
+[INFO (VERI-1018)] ./src/memory.v(23): compiling module 'memory_unit:(ADDRESS_BITS=12,PRINT_CYCLES_MIN=0,PRINT_CYCLES_MAX=15)'
+[WARN (VERI-1142)] ./src/memory.v(80): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/memory.v(81): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/memory.v(82): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/memory.v(83): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/memory.v(84): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/memory.v(85): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/memory.v(86): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/memory.v(87): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/memory.v(88): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/memory.v(89): system task 'display' is ignored for synthesis
+[INFO (VERI-1018)] ./src/memory_pipe.v(25): compiling module 'memory_pipe_unit:(ADDRESS_BITS=12)'
+[INFO (VERI-1018)] ./src/writeback.v(22): compiling module 'writeback_unit:(PRINT_CYCLES_MIN=0,PRINT_CYCLES_MAX=15)'
+[WARN (VERI-1142)] ./src/writeback.v(59): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/writeback.v(60): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/writeback.v(61): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/writeback.v(62): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/writeback.v(63): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/writeback.v(64): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/writeback.v(65): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/writeback.v(66): system task 'display' is ignored for synthesis
+[WARN (VERI-1142)] ./src/writeback.v(67): system task 'display' is ignored for synthesis
+[INFO (VERI-1018)] ./src/RISC_V_Core.v(24): compiling module 'RISC_V_Core'
+[WARN (VERI-1209)] ./src/RISC_V_Core.v(136): expression size 32 truncated to fit in target size 12
+INFO (INL208): Elaboration synthesis summary:
+  Number of synthesized netlists          21 (1 packages)
+  Single run mode                         On
+  Pipeline                                On (20 pipelined netlists)
+  Late hierarchical reference connection  On
+  Number of analyzed Verilog modules      21 (21 synthesized)
+  Number of analyzed VHDL entities        0 (0 synthesized)
+INFO (INL003): Clearing all state information (assumes, stopats, and so forth).
+RISC_V_Core
+[<embedded>] % 
+[<embedded>] % # Set up Clocks and Resets
+[<embedded>] % clock -none
+INFO (ICK008): Enabling clock-free environment.
+[<embedded>] % reset -none
+INFO (IPM031): Clearing proof results of all properties.
+[<embedded>] % 
+[<embedded>] % # Get design information to check general complexity
+[<embedded>] % get_design_info
+Statistics [for instance "RISC_V_Core"]
+---------------------------
+# Flops:         87 (1870) (0 property flop bits)
+# Latches:       0 (0)
+# Gates:         825 (16455)
+# Nets:          1251
+# Ports:         16
+# RTL Lines:     1940
+# RTL Instances: 20
+# Embedded Assumptions: 2
+# Embedded Assertions:  14
+# Embedded Covers:      21
+1870
+[<embedded>] % 
+[<embedded>] % # Prove properties
+[<embedded>] % prove -all
+Ncustom1: Custom engine code is hT3Ng7hPPfiYQOTDZ3qhYOwGAM51eA+J/FjkM5shLioAsqhgLR4Ft+O1BuKG6ilQ83B9tLXSl+CwjiTMAQA
+Bcustom2: Custom engine code is hT3Nm7hPr1Vp3Di1Ra2USNIGL4JypRnLKLAdF6JAyuavO2JfGCiY9OZJhcAcOUnLx5xwNdhILGrAWX9s+z2WDkKwNR7tAfClBEjRFVQeq6DU54boFgEA
+AMcustom3: Custom engine code is hT3Ng7hP/feYQOTDZ3qhYOwGAM51eA+J/FjkM5shLioAsqhgLR4Ft+O1BuKG6ilQ83B9tLXSmmqwm7g9AQA
+Mpcustom4: Custom engine code is hT3NZbhP9fmY2AbBQnsjfOxn6c+6e6yL+/e8fZFmaQrnlgEA
+INFO (IPF036): Starting proof on task: "<embedded>", 35 properties to prove with 0 already proven/unreachable
+INFO (IRS029): Starting reset analysis: phase 1 of 4.
+INFO (IRS030): Running reset analysis: phase 2 of 4.
+INFO (IRS031): Running reset analysis: phase 3 of 4.
+INFO (IRS020): Starting the reset analysis simulation with a limit of 100 iterations (phase 4 of 4).
+INFO (IRS024): Reset iterations 0 to 3 analyzed.
+INFO (IRS018): Reset analysis simulation executed for 2 iterations. Assigned values for 0 of 1870 design flops, 0 of 0 design latches, 37 of 37 internal elements.
+INFO (IRS039): Reset analysis complete.
+INFO (IPF031): Settings used for proof thread 0:
+    orchestration                 = on
+    time_limit                    = 86400s
+    per_property_time_limit       = 1s * 10 ^ scan
+    engine_mode                   = auto
+    proofgrid_per_engine_max_jobs = 1
+    max engine jobs               = auto
+    proofgrid_mode                = local
+    proofgrid_restarts            = 10
+0: Using multistage preprocessing
+0: Starting reduce
+AMcustom5: Custom engine code is hT3N1rhP11/52HrFRS21ROp2LOjVTgPvT8L8BGXHgLhaIuqtT4nARFjUqrBL+7pLmaTOzBepZW/Jm8SSrHDybSQtoNiO3y43wk+dEoWlsZizu97Fih6O6lPVG/LpWP5SsUPwlGagLNa1FKEFvwVXyX7//8prySbvSxIHXr5er+z4RAEA
+Ncustom6: Custom engine code is hT3OXrhPByJp3TrFSTLhUmMH4KVtJgmTCnNDF46yMXOKY48m4LS5nE7yBzFjA7kDuwO/GhGUpEPiky3p3wmPn3dJZHxFMsafSoObRzSC+tn7sEY0WbTdZ/FV4hL3MYH/b1CIUvXSWR4wqEoVLsmMOD4xIPT4lI1LO6ZCO7PnnWQuLwetnvKlrXx6wCW/A+x+enqslg1YPobi4wEF/EvbzOvcTYdJvl2s4H2yZg2b2ofAVN5WvhWk1HoBAA
+ADcustom7: Custom engine code is hT3Nv7hPv1752HrFRa2kROx2f/ECJeZB2AZsLdlO8VwmIuqtT4nIDFXclhg+O+o+DMmQCekbheGk0kK28laA9gaOFDXsQp29J3X615HY1IPHJWd6FUFvCHjO+p1k652b5JJvZlShNpGlGSXAiQe/mEAj6tEBAA
+Tricustom8: Custom engine code is hT3Nu7hPt1752DvFRa0kNDiyIV97VyejwM9C/jCLJjdPvusZONHY42VYUy0Q1ZotnhcVtNc56tJ5wbxv6V2+XpdsaSlHck5vfnbYjdwj1OECy9U+7oSQ0SZE3g5ayD+Phuh4odCJTjeKa2k4elM9ldQfkAEA
+Gcustom9: Custom engine code is hT3NibhPDfeYQADBZnYcglOvK9Pfd7EOeniIqP8jNsyIqInncipMGcUXqAadachREE9F2PwhBUZUNw5kHnd4JdXkamORRgEA
+C2custom10: Custom engine code is hT3NirhPjfWYQADBZnYcglOvK9Pfd7EOeniIqP8jNsyIqInncgkrYMMXCYbdK0dUjZIF9d4cJ0rHoBDjwVLBKuG86XYVV00BAA
+AGcustom11: Custom engine code is hT3NirhP/fmYQADBZnYcglOvK9Pfd7EOeniIqP8jNsyIqInnckcwYMMXCYbdK0dUjZIF9d4cJ0rHoBDjwVLBKuHEZnZByh0BAA
+Bcustom12: Custom engine code is hT3NjrhPDfiYQADBZnYcglOvK9PfWxFtenjIyBqfrgr7if/jL/yPOuK1BAflEcW0DxNH2eDIoezN2gxlQFg81RZtiWXh7aiTAidvAQA
+Ncustom13: Custom engine code is hT3NR7hPByFp3TrFSTLhUmMH4KWtJglTyV/c51BHEeZWamnJv767nE6PCak26bd3gf3XGN3rIRheufhDieCJQVISo+gNYUKhiUedBKGtsP/a18svAnlMJZudHxDFwK5ufsyoxsIyiAeSY2oi3tEuoDHr5gw42DFKAG3PqO3CEsl8Azzdt3pl5nGA1Ifv2H02eYsFzWb/nfp8PMb3F0krE/EgBcm8TD9Div8BAA
+Tricustom14: Custom engine code is hT3Nu7hP3fiYQADBZnYcglNHp9bfd7EOeniIqP/ji8sGLQu8yhsFO+wxJ+O+R0bU8g/IewXFomyos+viQnWc2xYNYmMqpo3i40O7DaZR7qfp4YqNx26KRvQ/qx0BAA
+0: Finished reduce in 0.002s
+0.0.PRE: Performing Proof Simplification...
+0.0.N: clocks: 2, declared: 1, looping: 0, posedge: 2, negedge: 0, noedge: 0, bothedge: 0
+0.0.N: Proof Simplification Iteration 1	[0.00 s]
+0.0.N: Proof Simplification Iteration 2	[0.01 s]
+0.0.N: Proof Simplification Iteration 3	[0.01 s]
+0.0.N: Proof Simplification Iteration 4	[0.01 s]
+0.0.PRE: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 0.0.PRE: The property ":noDeadEnd" was proven in 0.00 s.
+    Use check_assumptions -show -dead_end to show this property in the property table.
+0.0.PRE: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 0.0.PRE: The property ":noConflict" was proven in 0.00 s.
+    Use check_assumptions -show to show this property in the property table.
+INFO (IPF047): 0.0.PRE: The cover property ":live" was covered in 1 cycles in 0.00 s.
+    Use check_assumptions -show -live to show this property in the property table.
+0.0.PRE: Proof Simplification completed in 0.03 s
+0: About to start ProofGrid in its own thread with a limit of 10000 pending notifications and a limit of 10 traces.
+0: =============================== ProofGrid start ===============================
+0: ProofGrid usable level: 35
+0: Initial ProofGrid level: 1
+0: ProofGrid is starting event handling
+0.0.N: Proofgrid shell started at 53979@cadpc02(local) jg_53640_cadpc02_1
+0.0.Hp: Proofgrid shell started at 53980@cadpc02(local) jg_53640_cadpc02_1
+0.0.Hp: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+0.0.N: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+0.0.N: Next scan (0) will use per property time limit: 1s * 10 ^ 0 = 1s
+0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_2"	[0.00 s].
+0.0.N: Trace Attempt  1	[0.00 s]
+0.0.N: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 0.0.N: The property "RISC_V_Core.ID.du_props._assert_2" was proven in 0.00 s.
+0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_2"	[0.00 s].
+0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_2:precondition1"	[0.00 s].
+0.0.N: Trace Attempt  1	[0.00 s]
+0.0.N: A trace with 1 cycles was found. [0.00 s]
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_2:precondition1" was covered in 1 cycles in 0.91 s.
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._cover_8" was covered in 1 cycles in 0.91 s by the incidental trace "RISC_V_Core.ID.du_props._assert_2:precondition1".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_4:precondition1" was covered in 1 cycles in 0.91 s by the incidental trace "RISC_V_Core.ID.du_props._assert_2:precondition1".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._cover_10" was covered in 1 cycles in 0.91 s by the incidental trace "RISC_V_Core.ID.du_props._assert_2:precondition1".
+0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_2:precondition1"	[1.11 s].
+0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_3"	[0.00 s].
+0.0.N: Trace Attempt  1	[0.00 s]
+0.0.N: A proof was found: No trace exists. [0.01 s]
+INFO (IPF057): 0.0.N: The property "RISC_V_Core.ID.du_props._assert_3" was proven in 0.00 s.
+0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_3"	[0.00 s].
+0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_3:precondition1"	[0.00 s].
+0.0.N: Trace Attempt  1	[0.00 s]
+0.0.N: A trace with 1 cycles was found. [0.00 s]
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_3:precondition1" was covered in 1 cycles in 0.00 s.
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._cover_9" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_3:precondition1".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_6:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_3:precondition1".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._cover_11" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_3:precondition1".
+0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_3:precondition1"	[0.15 s].
+0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_4"	[0.00 s].
+0.0.Hp: A proof was found: No trace exists. [0.03 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID.du_props._assert_4" was proven in 1.27 s.
+0.0.N: Trace Attempt  1	[0.00 s]
+0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_4"	[0.00 s].
+0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_4:precondition1"	[0.00 s].
+0.0.N: Trace Attempt  1	[0.00 s]
+0.0.N: A trace with 1 cycles was found. [0.00 s]
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_4:precondition1" was covered in 1 cycles in 0.00 s.
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_8:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_4:precondition1".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._cover_12" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_4:precondition1".
+0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_4:precondition1"	[0.18 s].
+0.0.Hp: A proof was found: No trace exists. [0.04 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID.du_props._assert_5" was proven in 1.45 s.
+0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_5:precondition1"	[0.00 s].
+0.0.N: Trace Attempt  1	[0.00 s]
+0.0.Hp: A proof was found: No trace exists. [0.04 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID.du_props._assert_6" was proven in 1.45 s.
+0.0.N: A trace with 1 cycles was found. [0.00 s]
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_5:precondition1" was covered in 1 cycles in 0.00 s.
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_5:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_5:precondition1".
+0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_5:precondition1"	[0.13 s].
+0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_6:precondition1"	[0.00 s].
+0.0.Hp: A proof was found: No trace exists. [0.04 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID.du_props._assert_7" was proven in 1.58 s.
+0.0.Hp: A proof was found: No trace exists. [0.04 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_3" was proven in 1.58 s.
+0.0.Hp: A proof was found: No trace exists. [0.04 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_4" was proven in 1.58 s.
+0.0.Hp: A proof was found: No trace exists. [0.04 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_5" was proven in 1.58 s.
+0.0.Hp: A proof was found: No trace exists. [0.04 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_6" was proven in 1.58 s.
+0.0.N: Trace Attempt  1	[0.00 s]
+0.0.Hp: A proof was found: No trace exists. [0.04 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_7" was proven in 1.58 s.
+0.0.Hp: A proof was found: No trace exists. [0.04 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_8" was proven in 1.58 s.
+0.0.Hp: A proof was found: No trace exists. [0.04 s]
+INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_9" was proven in 1.58 s.
+0.0.N: A trace with 1 cycles was found. [0.00 s]
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_6:precondition1" was covered in 1 cycles in 0.00 s.
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_7:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_6:precondition1".
+0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_6:precondition1"	[0.15 s].
+0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_7:precondition1"	[0.00 s].
+0.0.N: Trace Attempt  1	[0.00 s]
+0: ProofGrid is temporarily paused because there are too many pending traces.
+0: ProofGrid is resuming to work after pausing for 1s. The amount of pending traces decreased.
+0.0.N: A trace with 1 cycles was found. [0.00 s]
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_7:precondition1" was covered in 1 cycles in 0.00 s.
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._cover_10" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_7:precondition1".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_9:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_7:precondition1".
+0: ProofGrid is temporarily paused because there are too many pending traces.
+0: ProofGrid is resuming to work after pausing for 0s. The amount of pending traces decreased.
+0: ProofGrid usable level: 4
+0.0.Hp: Trace Attempt  1	[0.04 s]
+0.0.N: Requesting engine job to terminate
+0.0.Hp: Requesting engine job to terminate
+INFO (IPF144): 0: Initiating shutdown of proof [1.76 s]
+0.0.Hp: A trace with 1 cycles was found. [0.05 s]
+INFO (IPF055): 0.0.Hp: A counterexample (cex) with 1 cycles was found for the property "RISC_V_Core.ID_SB.sb_props._assert_2" in 1.90 s.
+INFO (IPF047): 0.0.Hp: The cover property "RISC_V_Core.ID_SB.sb_props._assert_2:precondition1" was covered in 1 cycles in 1.90 s.
+INFO (IPF047): 0.0.Hp: The cover property "RISC_V_Core.ID_SB.sb_props._assert_3:precondition1" was covered in 1 cycles in 1.90 s.
+INFO (IPF047): 0.0.Hp: The cover property "RISC_V_Core.ID_SB.sb_props._cover_13" was covered in 1 cycles in 1.90 s.
+0.0.Hp: All properties determined. [0.05 s]
+0.0.Ht: Proofgrid shell started at 54011@cadpc02(local) jg_53640_cadpc02_1
+0.0.Ht: Requesting engine job to terminate
+0.0.Ht: Preventing job from starting because proof is shutting down.
+0.0.Ht: Requesting engine job to terminate
+0.0.Bm: Proofgrid shell started at 54012@cadpc02(local) jg_53640_cadpc02_1
+0.0.Bm: Requesting engine job to terminate
+0.0.Bm: Preventing job from starting because proof is shutting down.
+0.0.Bm: Requesting engine job to terminate
+0.0.Mpcustom4: Proofgrid shell started at 54013@cadpc02(local) jg_53640_cadpc02_1
+0.0.Mpcustom4: Requesting engine job to terminate
+0.0.Mpcustom4: Preventing job from starting because proof is shutting down.
+0.0.Mpcustom4: Requesting engine job to terminate
+0.0.Oh: Proofgrid shell started at 54014@cadpc02(local) jg_53640_cadpc02_1
+0.0.Oh: Requesting engine job to terminate
+0.0.Oh: Preventing job from starting because proof is shutting down.
+0.0.Oh: Requesting engine job to terminate
+0.0.L: Proofgrid shell started at 54015@cadpc02(local) jg_53640_cadpc02_1
+0.0.L: Requesting engine job to terminate
+0.0.L: Preventing job from starting because proof is shutting down.
+0.0.L: Requesting engine job to terminate
+0.0.B: Proofgrid shell started at 54016@cadpc02(local) jg_53640_cadpc02_1
+0.0.B: Requesting engine job to terminate
+0.0.B: Preventing job from starting because proof is shutting down.
+0.0.B: Requesting engine job to terminate
+0.0.AM: Proofgrid shell started at 54017@cadpc02(local) jg_53640_cadpc02_1
+0.0.AM: Requesting engine job to terminate
+0.0.AM: Preventing job from starting because proof is shutting down.
+0.0.AM: Requesting engine job to terminate
+0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_7:precondition1"	[0.32 s].
+0.0.N: Starting proof for property "RISC_V_Core.ID_SB.sb_props._assert_2"	[0.00 s].
+0.0.N: Trace Attempt  1	[0.00 s]
+0.0.N: Stopped processing property "RISC_V_Core.ID_SB.sb_props._assert_2"	[0.00 s].
+0.0.Hp: Exited with Success (@ 1.76 s)
+0: ProofGrid usable level: 0
+0.0.Ht: Interrupted. [0.00 s]
+0.0.Bm: Interrupted. [0.00 s]
+0.0.Mpcustom4: Interrupted. [0.00 s]
+0.0.Oh: Interrupted. [0.00 s]
+0.0.L: Interrupted. [0.00 s]
+0.0.B: Interrupted. [0.00 s]
+0.0.AM: Interrupted. [0.00 s]
+0.0.Ht: Exited with Success (@ 1.76 s)
+0.0.Bm: Exited with Success (@ 1.76 s)
+0.0.Mpcustom4: Exited with Success (@ 1.76 s)
+0.0.L: Exited with Success (@ 1.76 s)
+0.0.B: Exited with Success (@ 1.76 s)
+0.0.AM: Exited with Success (@ 1.76 s)
+0.0.N: All properties determined. [1.70 s]
+0.0.Oh: Exited with Success (@ 1.76 s)
+0.0.N: Exited with Success (@ 1.76 s)
+0: --------------------------------------------------------------
+ProofGrid Summary (utilization 21.48 %)
+--------------------------------------------------------------
+     engines started                               :     9
+     engine jobs started                           :     9
+
+    Average time in state (seconds)
+    ------------------------------------------------------
+    Engine  Pending     Running        Dead    Utilization
+    ------------------------------------------------------
+      N        0.32        1.73        0.00       84.38 %
+     Hp        0.15        1.73        0.00       91.79 %
+     Ht        1.76        0.00        0.00        0.00 %
+     Bm        1.75        0.00        0.00        0.00 %
+    Mpcustom4        1.74        0.00        0.00        0.00 %
+     Oh        1.73        0.00        0.00        0.00 %
+      L        1.73        0.00        0.00        0.00 %
+      B        1.73        0.00        0.00        0.00 %
+     AM        1.72        0.00        0.00        0.00 %
+    all        1.40        0.38        0.00       21.48 %
+
+    Total time in state (seconds)
+    -----------------------------------------
+            Pending     Running        Dead  
+    -----------------------------------------
+              12.64        3.46        0.00
+
+    Data read    : 96.94 kiB
+    Data written : 2.08 kiB
+
+0: All pending notifications were processed.
+0: ProofGrid was paused 2 times for a total of 1.695 seconds
+INFO (IPF059): 0: Completed proof on task: "<embedded>"
+
+==============================================================
+SUMMARY
+==============================================================
+           Properties Considered              : 35
+                 assertions                   : 14
+                  - proven                    : 13 (92.8571%)
+                  - bounded_proven (user)     : 0 (0%)
+                  - bounded_proven (auto)     : 0 (0%)
+                  - marked_proven             : 0 (0%)
+                  - cex                       : 1 (7.14286%)
+                  - ar_cex                    : 0 (0%)
+                  - undetermined              : 0 (0%)
+                  - unknown                   : 0 (0%)
+                  - error                     : 0 (0%)
+                 covers                       : 21
+                  - unreachable               : 0 (0%)
+                  - bounded_unreachable (user): 0 (0%)
+                  - covered                   : 21 (100%)
+                  - ar_covered                : 0 (0%)
+                  - undetermined              : 0 (0%)
+                  - unknown                   : 0 (0%)
+                  - error                     : 0 (0%)
+determined
+[<embedded>] % 
+[<embedded>] % # Report proof results
+[<embedded>] % report
+
+==============================================================
+    Jasper Verification Results
+==============================================================
+    2024.06p002 64 bits for Linux64 3.10.0-1160.21.1.el7.x86_64
+    Host Name: cadpc02.ee.columbia.edu
+    User Name: ww2766
+    Printed on: Tuesday, Dec16, 2025 11:30:14 PM EST
+    Working Directory: /homes/user/stud/fall25/ww2766/CSEEE6863/6863-RISCV-FV
+
+
+==============================================================
+RESULTS
+==============================================================
+
+---------------------------------------------------------------------------------------------------------------
+       Name                                                   |    Result    |  Engine  |  Bound  |  Time    
+---------------------------------------------------------------------------------------------------------------
+
+---[ <embedded> ]----------------------------------------------------------------------------------------------
+[1]   RISC_V_Core.ID.du_props._assert_2                            proven          N      Infinite    0.000 s      
+[2]   RISC_V_Core.ID.du_props._assert_2:precondition1              covered         N             1    0.905 s      
+[3]   RISC_V_Core.ID.du_props._assert_3                            proven          N      Infinite    0.000 s      
+[4]   RISC_V_Core.ID.du_props._assert_3:precondition1              covered         N             1    0.000 s      
+[5]   RISC_V_Core.ID.du_props._assert_4                            proven          Hp     Infinite    1.267 s      
+[6]   RISC_V_Core.ID.du_props._assert_4:precondition1              covered         N             1    0.001 s      
+[7]   RISC_V_Core.ID.du_props._assert_5                            proven          Hp     Infinite    1.446 s      
+[8]   RISC_V_Core.ID.du_props._assert_5:precondition1              covered         N             1    0.001 s      
+[9]   RISC_V_Core.ID.du_props._assert_6                            proven          Hp     Infinite    1.447 s      
+[10]  RISC_V_Core.ID.du_props._assert_6:precondition1              covered         N             1    0.001 s      
+[11]  RISC_V_Core.ID.du_props._assert_7                            proven          Hp     Infinite    1.575 s      
+[12]  RISC_V_Core.ID.du_props._assert_7:precondition1              covered         N             1    0.001 s      
+[13]  RISC_V_Core.ID.du_props._cover_8                             covered         N             1    0.905 s      
+[14]  RISC_V_Core.ID.du_props._cover_9                             covered         N             1    0.000 s      
+[15]  RISC_V_Core.ID.du_props._cover_10                            covered         N             1    0.001 s      
+[16]  RISC_V_Core.ID_SB.sb_props._assert_2                         cex             Hp            1    1.904 s      
+[17]  RISC_V_Core.ID_SB.sb_props._assert_2:precondition1           covered         Hp            1    1.904 s      
+[18]  RISC_V_Core.ID_SB.sb_props._assert_3                         proven          Hp     Infinite    1.575 s      
+[19]  RISC_V_Core.ID_SB.sb_props._assert_3:precondition1           covered         Hp            1    1.904 s      
+[20]  RISC_V_Core.ID_SB.sb_props._assert_4                         proven          Hp     Infinite    1.575 s      
+[21]  RISC_V_Core.ID_SB.sb_props._assert_4:precondition1           covered         N             1    0.905 s      
+[22]  RISC_V_Core.ID_SB.sb_props._assert_5                         proven          Hp     Infinite    1.575 s      
+[23]  RISC_V_Core.ID_SB.sb_props._assert_5:precondition1           covered         N             1    0.001 s      
+[24]  RISC_V_Core.ID_SB.sb_props._assert_6                         proven          Hp     Infinite    1.576 s      
+[25]  RISC_V_Core.ID_SB.sb_props._assert_6:precondition1           covered         N             1    0.000 s      
+[26]  RISC_V_Core.ID_SB.sb_props._assert_7                         proven          Hp     Infinite    1.576 s      
+[27]  RISC_V_Core.ID_SB.sb_props._assert_7:precondition1           covered         N             1    0.001 s      
+[28]  RISC_V_Core.ID_SB.sb_props._assert_8                         proven          Hp     Infinite    1.576 s      
+[29]  RISC_V_Core.ID_SB.sb_props._assert_8:precondition1           covered         N             1    0.001 s      
+[30]  RISC_V_Core.ID_SB.sb_props._assert_9                         proven          Hp     Infinite    1.576 s      
+[31]  RISC_V_Core.ID_SB.sb_props._assert_9:precondition1           covered         N             1    0.001 s      
+[32]  RISC_V_Core.ID_SB.sb_props._cover_10                         covered         N             1    0.905 s      
+[33]  RISC_V_Core.ID_SB.sb_props._cover_11                         covered         N             1    0.000 s      
+[34]  RISC_V_Core.ID_SB.sb_props._cover_12                         covered         N             1    0.001 s      
+[35]  RISC_V_Core.ID_SB.sb_props._cover_13                         covered         Hp            1    1.904 s      
+
+==============================================================
+ASSUMPTIONS
+==============================================================
+
+-------------------------------------------------------------------------------
+       Name    |  Expression  |  Location     |  Status      |  Dependencies                  
+-------------------------------------------------------------------------------
+[1]   <embedded>::RISC_V_Core.ID.du_props._assume_1  ID.du_props._assume_1  N/A temporary     
+[2]   <embedded>::RISC_V_Core.ID_SB.sb_props._assume_1  ID_SB.sb_props._assume_1  N/A temporary
