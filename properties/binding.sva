@@ -1,0 +1,35 @@
+
+`ifndef BRISCV_PIPELINE_BINDINGS_SVA
+`define BRISCV_PIPELINE_BINDINGS_SVA
+
+bind stall_and_bypass_control_unit stall_bypass_properties sb_props (
+    .clock               (clock),
+    .rs1                 (rs1),
+    .rs2                 (rs2),
+    .regwrite_execute    (regwrite_execute),
+    .regwrite_memory     (regwrite_memory),
+    .regwrite_writeback  (regwrite_writeback),
+    .rd_execute          (rd_execute),
+    .rd_memory           (rd_memory),
+    .rd_writeback        (rd_writeback),
+    .opcode_execute      (opcode_execute),
+    .rs1_data_bypass     (rs1_data_bypass),
+    .rs2_data_bypass     (rs2_data_bypass),
+    .stall_needed        (stall_needed)
+);
+
+bind decode_unit decode_bypass_properties #(
+    .DATA_WIDTH(DATA_WIDTH)
+) du_props (
+    .clock               (clock),
+    .reset               (reset),
+    .rs1_data_bypass     (rs1_data_bypass),
+    .rs2_data_bypass     (rs2_data_bypass),
+    .rs1_data            (rs1_data),
+    .rs2_data            (rs2_data),
+    .ALU_result_execute  (ALU_result_execute),
+    .ALU_result_memory   (ALU_result_memory),
+    .ALU_result_writeback(ALU_result_writeback)
+);
+
+`endif
