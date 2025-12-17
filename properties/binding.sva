@@ -2,6 +2,9 @@
 `ifndef BRISCV_PIPELINE_BINDINGS_SVA
 `define BRISCV_PIPELINE_BINDINGS_SVA
 
+`include "stall_bypass_properties.sv"
+`include "decode_bypass_properties.sv"
+
 bind stall_and_bypass_control_unit stall_bypass_properties sb_props (
     .clock               (clock),
     .rs1                 (rs1),
