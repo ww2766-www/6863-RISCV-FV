@@ -5,10 +5,10 @@
 # version   : 2024.06p002 64 bits
 # build date: 2024.09.02 16:28:38 UTC
 # ----------------------------------------
-# started   : 2025-12-16 23:30:10 EST
+# started   : 2025-12-19 15:52:45 EST
 # hostname  : cadpc02.(none)
-# pid       : 53640
-# arguments : '-label' 'session_0' '-console' '//127.0.0.1:42269' '-style' 'windows' '-data' 'AAAAonicY2RgYLCp////PwMYMD6A0Aw2jAyoAMRnQhUJbEChGRhYYZphSkAaOBh0GdIYChjKgGw9hiSGSiA7kaEYCOOBYqkMRQyZQPlMhmSgaAmQzmfIA6orAfJzwGYAAAbjEdY=' '-proj' '/homes/user/stud/fall25/ww2766/CSEEE6863/6863-RISCV-FV/jgproject/sessionLogs/session_0' '-init' '-hidden' '/homes/user/stud/fall25/ww2766/CSEEE6863/6863-RISCV-FV/jgproject/.tmp/.initCmds.tcl' 'bypass_verification.tcl'
+# pid       : 1693356
+# arguments : '-label' 'session_0' '-console' '//127.0.0.1:32791' '-style' 'windows' '-data' 'AAAAxHicVYvLCYBAEEPfCoLNaAUWoRWILAqCP/xdtVQ7WbOKhw1kkplJDJCfzjlemPtTckMIv0fhpbwChfgv/xFfSEhpmTnkCzYaBm2V2IkNvXSUVqz6LuxY6S7nb4fmokQrWmp9OiblMzmrrscDF8IZIQ==' '-proj' '/homes/user/stud/fall25/rm4305/6863-RISCV-FV/jgproject/sessionLogs/session_0' '-init' '-hidden' '/homes/user/stud/fall25/rm4305/6863-RISCV-FV/jgproject/.tmp/.initCmds.tcl' 'temp_pipeline_structure_verification.tcl'
 
 Any disclosure about the Cadence Design Systems software or its use
 model to any third party violates the written Non-Disclosure Agreement
@@ -43,10 +43,10 @@ Rights at 48 CFR 52.227-19, as applicable.
 
 For technical assistance visit http://support.cadence.com.
 
-Jasper Apps Analysis Session - /homes/user/stud/fall25/ww2766/CSEEE6863/6863-RISCV-FV/jgproject/sessionLogs/session_0
+Jasper Apps Analysis Session - /homes/user/stud/fall25/rm4305/6863-RISCV-FV/jgproject/sessionLogs/session_0
 
 INFO: successfully checked out licenses "jasper_interactive" and "jasper_fao".
-INFO: reading configuration file "/user/stud/fall25/ww2766/.config/cadence/jasper.conf".
+INFO: reading configuration file "/user/stud/fall25/rm4305/.config/cadence/jasper.conf".
 % # ----------------------------------------
 % #  Copyright (c) 2017 Cadence Design Systems, Inc. All Rights
 % #  Reserved.  Unpublished -- rights reserved under the copyright 
@@ -94,10 +94,9 @@ WARNING (WCD032): Passing arguments to "analyze" as lists has been deprecated.
 % 
 % # Analyze property bindings (includes individual .sva files)
 % analyze -sva \
-  ${PROP_PATH}/binding.sva
-[-- (VERI-1482)] Analyzing Verilog file './/properties/binding.sva'
-[INFO (VERI-1328)] .//properties/binding.sva(5): analyzing included file './/properties/stall_bypass_properties.sv'
-[INFO (VERI-1328)] .//properties/binding.sva(6): analyzing included file './/properties/decode_bypass_properties.sv'
+  ${PROP_PATH}/bind_pipeline_structure.sva
+[-- (VERI-1482)] Analyzing Verilog file './/properties/bind_pipeline_structure.sva'
+[INFO (VERI-1328)] .//properties/bind_pipeline_structure.sva(5): analyzing included file './/properties/pipeline_structure_properties.sv'
 % 
 % # Elaborate the full core so both decode and stall units are instantiated
 % elaborate -top RISC_V_Core
@@ -140,8 +139,6 @@ INFO (ISW003): Top module name is "RISC_V_Core".
 [WARN (VERI-1142)] ./src/fetch.v(156): system task 'display' is ignored for synthesis
 [INFO (VERI-1018)] ./src/fetch_pipe.v(25): compiling module 'fetch_pipe_unit:(ADDRESS_BITS=12)'
 [INFO (VERI-1018)] ./src/regFile.v(24): compiling module 'regFile'
-[INFO (VERI-1018)] .//properties/decode_bypass_properties.sv(2): compiling module 'decode_bypass_properties'
-[WARN (VERI-1796)] .//properties/decode_bypass_properties.sv(21): system function call isunknown with non-constant argument is not supported for synthesis
 [INFO (VERI-1018)] ./src/decode.v(23): compiling module 'decode_unit:(ADDRESS_BITS=12,PRINT_CYCLES_MIN=0,PRINT_CYCLES_MAX=15)'
 [WARN (VERI-1209)] ./src/decode.v(99): expression size 32 truncated to fit in target size 12
 [WARN (VERI-1209)] ./src/decode.v(111): expression size 32 truncated to fit in target size 12
@@ -161,8 +158,6 @@ INFO (ISW003): Top module name is "RISC_V_Core".
 [WARN (VERI-1142)] ./src/decode.v(154): system task 'display' is ignored for synthesis
 [WARN (VERI-1142)] ./src/decode.v(155): system task 'display' is ignored for synthesis
 [WARN (VERI-1142)] ./src/decode.v(156): system task 'display' is ignored for synthesis
-[INFO (VERI-1018)] .//properties/stall_bypass_properties.sv(2): compiling module 'stall_bypass_properties'
-[WARN (VERI-1796)] .//properties/stall_bypass_properties.sv(41): system function call isunknown with non-constant argument is not supported for synthesis
 [INFO (VERI-1018)] ./src/stallControl.v(29): compiling module 'stall_and_bypass_control_unit'
 [INFO (VERI-1018)] ./src/control_unit.v(29): compiling module 'control_unit:(PRINT_CYCLES_MIN=0,PRINT_CYCLES_MAX=15)'
 [WARN (VERI-1209)] ./src/control_unit.v(72): expression size 32 truncated to fit in target size 1
@@ -250,14 +245,45 @@ INFO (ISW003): Top module name is "RISC_V_Core".
 [WARN (VERI-1142)] ./src/writeback.v(65): system task 'display' is ignored for synthesis
 [WARN (VERI-1142)] ./src/writeback.v(66): system task 'display' is ignored for synthesis
 [WARN (VERI-1142)] ./src/writeback.v(67): system task 'display' is ignored for synthesis
+[INFO (VERI-1018)] .//properties/pipeline_structure_properties.sv(17): compiling module 'pipeline_structure_properties'
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(229): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(229): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(239): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(239): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(249): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(249): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(259): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(259): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(273): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(273): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(273): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(284): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(284): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(284): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(295): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(295): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(295): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(306): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(306): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(306): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(323): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(323): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(327): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(327): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(331): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(331): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(335): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(335): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(360): system function call isunknown with non-constant argument is not supported for synthesis
+[WARN (VERI-1796)] .//properties/pipeline_structure_properties.sv(360): system function call isunknown with non-constant argument is not supported for synthesis
 [INFO (VERI-1018)] ./src/RISC_V_Core.v(24): compiling module 'RISC_V_Core'
 [WARN (VERI-1209)] ./src/RISC_V_Core.v(136): expression size 32 truncated to fit in target size 12
 INFO (INL208): Elaboration synthesis summary:
-  Number of synthesized netlists          21 (1 packages)
+  Number of synthesized netlists          20 (1 packages)
   Single run mode                         On
-  Pipeline                                On (20 pipelined netlists)
+  Pipeline                                On (19 pipelined netlists)
   Late hierarchical reference connection  On
-  Number of analyzed Verilog modules      21 (21 synthesized)
+  Number of analyzed Verilog modules      20 (20 synthesized)
   Number of analyzed VHDL entities        0 (0 synthesized)
 INFO (INL003): Clearing all state information (assumes, stopats, and so forth).
 RISC_V_Core
@@ -272,17 +298,17 @@ INFO (IPM031): Clearing proof results of all properties.
 [<embedded>] % get_design_info
 Statistics [for instance "RISC_V_Core"]
 ---------------------------
-# Flops:         87 (1870) (0 property flop bits)
+# Flops:         101 (2894) (6 property flop bits)
 # Latches:       0 (0)
-# Gates:         825 (16455)
-# Nets:          1251
+# Gates:         795 (20340)
+# Nets:          1237
 # Ports:         16
-# RTL Lines:     1940
-# RTL Instances: 20
-# Embedded Assumptions: 2
-# Embedded Assertions:  14
-# Embedded Covers:      21
-1870
+# RTL Lines:     2100
+# RTL Instances: 19
+# Embedded Assumptions: 0
+# Embedded Assertions:  8
+# Embedded Covers:      16
+2894
 [<embedded>] % 
 [<embedded>] % # Prove properties
 [<embedded>] % prove -all
@@ -290,13 +316,13 @@ Ncustom1: Custom engine code is hT3Ng7hPPfiYQOTDZ3qhYOwGAM51eA+J/FjkM5shLioAsqhg
 Bcustom2: Custom engine code is hT3Nm7hPr1Vp3Di1Ra2USNIGL4JypRnLKLAdF6JAyuavO2JfGCiY9OZJhcAcOUnLx5xwNdhILGrAWX9s+z2WDkKwNR7tAfClBEjRFVQeq6DU54boFgEA
 AMcustom3: Custom engine code is hT3Ng7hP/feYQOTDZ3qhYOwGAM51eA+J/FjkM5shLioAsqhgLR4Ft+O1BuKG6ilQ83B9tLXSmmqwm7g9AQA
 Mpcustom4: Custom engine code is hT3NZbhP9fmY2AbBQnsjfOxn6c+6e6yL+/e8fZFmaQrnlgEA
-INFO (IPF036): Starting proof on task: "<embedded>", 35 properties to prove with 0 already proven/unreachable
+INFO (IPF036): Starting proof on task: "<embedded>", 24 properties to prove with 0 already proven/unreachable
 INFO (IRS029): Starting reset analysis: phase 1 of 4.
 INFO (IRS030): Running reset analysis: phase 2 of 4.
 INFO (IRS031): Running reset analysis: phase 3 of 4.
 INFO (IRS020): Starting the reset analysis simulation with a limit of 100 iterations (phase 4 of 4).
-INFO (IRS024): Reset iterations 0 to 3 analyzed.
-INFO (IRS018): Reset analysis simulation executed for 2 iterations. Assigned values for 0 of 1870 design flops, 0 of 0 design latches, 37 of 37 internal elements.
+INFO (IRS024): Reset iterations 0 to 4 analyzed.
+INFO (IRS018): Reset analysis simulation executed for 3 iterations. Assigned values for 0 of 2888 design flops, 0 of 0 design latches, 30 of 30 internal elements.
 INFO (IRS039): Reset analysis complete.
 INFO (IPF031): Settings used for proof thread 0:
     orchestration                 = on
@@ -325,7 +351,7 @@ Tricustom14: Custom engine code is hT3Nu7hP3fiYQADBZnYcglNHp9bfd7EOeniIqP/ji8sGL
 0.0.N: Proof Simplification Iteration 1	[0.00 s]
 0.0.N: Proof Simplification Iteration 2	[0.01 s]
 0.0.N: Proof Simplification Iteration 3	[0.01 s]
-0.0.N: Proof Simplification Iteration 4	[0.01 s]
+0.0.N: Proof Simplification Iteration 4	[0.02 s]
 0.0.PRE: A proof was found: No trace exists. [0.00 s]
 INFO (IPF057): 0.0.PRE: The property ":noDeadEnd" was proven in 0.00 s.
     Use check_assumptions -show -dead_end to show this property in the property table.
@@ -337,157 +363,125 @@ INFO (IPF047): 0.0.PRE: The cover property ":live" was covered in 1 cycles in 0.
 0.0.PRE: Proof Simplification completed in 0.03 s
 0: About to start ProofGrid in its own thread with a limit of 10000 pending notifications and a limit of 10 traces.
 0: =============================== ProofGrid start ===============================
-0: ProofGrid usable level: 35
+0: ProofGrid usable level: 24
 0: Initial ProofGrid level: 1
 0: ProofGrid is starting event handling
-0.0.N: Proofgrid shell started at 53979@cadpc02(local) jg_53640_cadpc02_1
-0.0.Hp: Proofgrid shell started at 53980@cadpc02(local) jg_53640_cadpc02_1
-0.0.Hp: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+0.0.N: Proofgrid shell started at 1693421@cadpc02(local) jg_1693356_cadpc02_1
 0.0.N: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+0.0.Hp: Proofgrid shell started at 1693422@cadpc02(local) jg_1693356_cadpc02_1
 0.0.N: Next scan (0) will use per property time limit: 1s * 10 ^ 0 = 1s
-0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_2"	[0.00 s].
-0.0.N: Trace Attempt  1	[0.00 s]
-0.0.N: A proof was found: No trace exists. [0.00 s]
-INFO (IPF057): 0.0.N: The property "RISC_V_Core.ID.du_props._assert_2" was proven in 0.00 s.
-0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_2"	[0.00 s].
-0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_2:precondition1"	[0.00 s].
+0.0.N: Starting proof for property "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL"	[0.00 s].
 0.0.N: Trace Attempt  1	[0.00 s]
 0.0.N: A trace with 1 cycles was found. [0.00 s]
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_2:precondition1" was covered in 1 cycles in 0.91 s.
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._cover_8" was covered in 1 cycles in 0.91 s by the incidental trace "RISC_V_Core.ID.du_props._assert_2:precondition1".
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_4:precondition1" was covered in 1 cycles in 0.91 s by the incidental trace "RISC_V_Core.ID.du_props._assert_2:precondition1".
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._cover_10" was covered in 1 cycles in 0.91 s by the incidental trace "RISC_V_Core.ID.du_props._assert_2:precondition1".
-0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_2:precondition1"	[1.11 s].
-0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_3"	[0.00 s].
-0.0.N: Trace Attempt  1	[0.00 s]
-0.0.N: A proof was found: No trace exists. [0.01 s]
-INFO (IPF057): 0.0.N: The property "RISC_V_Core.ID.du_props._assert_3" was proven in 0.00 s.
-0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_3"	[0.00 s].
-0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_3:precondition1"	[0.00 s].
-0.0.N: Trace Attempt  1	[0.00 s]
-0.0.N: A trace with 1 cycles was found. [0.00 s]
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_3:precondition1" was covered in 1 cycles in 0.00 s.
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._cover_9" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_3:precondition1".
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_6:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_3:precondition1".
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._cover_11" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_3:precondition1".
-0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_3:precondition1"	[0.15 s].
-0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_4"	[0.00 s].
-0.0.Hp: A proof was found: No trace exists. [0.03 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID.du_props._assert_4" was proven in 1.27 s.
-0.0.N: Trace Attempt  1	[0.00 s]
-0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_4"	[0.00 s].
-0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_4:precondition1"	[0.00 s].
+INFO (IPF055): 0.0.N: A counterexample (cex) with 1 cycles was found for the property "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL" in 0.09 s.
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL:precondition1" was covered in 1 cycles in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF055): 0.0.N: A counterexample (cex) with 1 cycles was found for the property "RISC_V_Core.pipe_props.ASSERT_HOLD_ID_EX_ON_STALL" in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.ASSERT_HOLD_ID_EX_ON_STALL:precondition1" was covered in 1 cycles in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL:precondition1" was covered in 1 cycles in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF055): 0.0.N: A counterexample (cex) with 1 cycles was found for the property "RISC_V_Core.pipe_props.ASSERT_MAP_IF_TO_IFID" in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.ASSERT_MAP_IF_TO_IFID:precondition1" was covered in 1 cycles in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF055): 0.0.N: A counterexample (cex) with 1 cycles was found for the property "RISC_V_Core.pipe_props.ASSERT_MAP_ID_TO_IDEX" in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.ASSERT_MAP_ID_TO_IDEX:precondition1" was covered in 1 cycles in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.COVER_PAST_VALID" was covered in 1 cycles in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.COVER_STALL" was covered in 1 cycles in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.COVER_IFID_UPD" was covered in 1 cycles in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.COVER_IDEX_UPD" was covered in 1 cycles in 0.09 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL".
+0: ProofGrid usable level: 11
+0.0.N: Stopped processing property "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL"	[0.11 s].
+0.0.N: Starting proof for property "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D"	[0.00 s].
 0.0.N: Trace Attempt  1	[0.00 s]
 0.0.N: A trace with 1 cycles was found. [0.00 s]
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_4:precondition1" was covered in 1 cycles in 0.00 s.
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_8:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_4:precondition1".
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._cover_12" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_4:precondition1".
-0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_4:precondition1"	[0.18 s].
-0.0.Hp: A proof was found: No trace exists. [0.04 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID.du_props._assert_5" was proven in 1.45 s.
-0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_5:precondition1"	[0.00 s].
+INFO (IPF055): 0.0.N: A counterexample (cex) with 1 cycles was found for the property "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D" in 0.00 s.
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.COVER_STALL_D" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D".
+0.0.N: Stopped processing property "RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D"	[0.02 s].
+0.0.N: Starting proof for property "RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL"	[0.00 s].
 0.0.N: Trace Attempt  1	[0.00 s]
-0.0.Hp: A proof was found: No trace exists. [0.04 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID.du_props._assert_6" was proven in 1.45 s.
+0.0.Hp: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
 0.0.N: A trace with 1 cycles was found. [0.00 s]
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_5:precondition1" was covered in 1 cycles in 0.00 s.
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_5:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_5:precondition1".
-0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_5:precondition1"	[0.13 s].
-0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_6:precondition1"	[0.00 s].
-0.0.Hp: A proof was found: No trace exists. [0.04 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID.du_props._assert_7" was proven in 1.58 s.
-0.0.Hp: A proof was found: No trace exists. [0.04 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_3" was proven in 1.58 s.
-0.0.Hp: A proof was found: No trace exists. [0.04 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_4" was proven in 1.58 s.
-0.0.Hp: A proof was found: No trace exists. [0.04 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_5" was proven in 1.58 s.
-0.0.Hp: A proof was found: No trace exists. [0.04 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_6" was proven in 1.58 s.
+INFO (IPF055): 0.0.N: A counterexample (cex) with 1 cycles was found for the property "RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL" in 0.00 s.
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.ASSERT_MAP_EX_TO_EXMEM:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.COVER_EXMEM_UPD" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL".
+0.0.N: Stopped processing property "RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL"	[0.02 s].
+0.0.N: Starting proof for property "RISC_V_Core.pipe_props.ASSERT_MAP_EX_TO_EXMEM"	[0.00 s].
 0.0.N: Trace Attempt  1	[0.00 s]
-0.0.Hp: A proof was found: No trace exists. [0.04 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_7" was proven in 1.58 s.
-0.0.Hp: A proof was found: No trace exists. [0.04 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_8" was proven in 1.58 s.
-0.0.Hp: A proof was found: No trace exists. [0.04 s]
-INFO (IPF057): 0.0.Hp: The property "RISC_V_Core.ID_SB.sb_props._assert_9" was proven in 1.58 s.
 0.0.N: A trace with 1 cycles was found. [0.00 s]
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_6:precondition1" was covered in 1 cycles in 0.00 s.
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_7:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_6:precondition1".
-0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_6:precondition1"	[0.15 s].
-0.0.N: Starting proof for property "RISC_V_Core.ID.du_props._assert_7:precondition1"	[0.00 s].
+INFO (IPF055): 0.0.N: A counterexample (cex) with 1 cycles was found for the property "RISC_V_Core.pipe_props.ASSERT_MAP_EX_TO_EXMEM" in 0.00 s.
+0.0.N: Stopped processing property "RISC_V_Core.pipe_props.ASSERT_MAP_EX_TO_EXMEM"	[0.02 s].
+0.0.N: Starting proof for property "RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB"	[0.00 s].
 0.0.N: Trace Attempt  1	[0.00 s]
-0: ProofGrid is temporarily paused because there are too many pending traces.
-0: ProofGrid is resuming to work after pausing for 1s. The amount of pending traces decreased.
 0.0.N: A trace with 1 cycles was found. [0.00 s]
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._assert_7:precondition1" was covered in 1 cycles in 0.00 s.
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID.du_props._cover_10" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_7:precondition1".
-INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.ID_SB.sb_props._assert_9:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.ID.du_props._assert_7:precondition1".
-0: ProofGrid is temporarily paused because there are too many pending traces.
-0: ProofGrid is resuming to work after pausing for 0s. The amount of pending traces decreased.
-0: ProofGrid usable level: 4
-0.0.Hp: Trace Attempt  1	[0.04 s]
+INFO (IPF055): 0.0.N: A counterexample (cex) with 1 cycles was found for the property "RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB" in 0.00 s.
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB:precondition1" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB".
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.COVER_MEMWB_UPD" was covered in 1 cycles in 0.00 s by the incidental trace "RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB".
+0.0.N: Stopped processing property "RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB"	[0.02 s].
+0.0.N: Last scan. Per property time limit: 0s
+0.0.N: Starting proof for property "RISC_V_Core.pipe_props.COVER_FLOW_IF_TO_WB_4CYC_NO_STALL"	[0.00 s].
+0.0.N: Trace Attempt  1	[0.00 s]
+0.0.N: Trace Attempt  2	[0.00 s]
+0.0.N: Trace Attempt  2	[0.00 s]
+0.0.N: Trace Attempt  3	[0.01 s]
+0.0.N: Trace Attempt  4	[0.01 s]
+0.0.N: Trace Attempt  4	[0.01 s]
+0.0.N: Trace Attempt  5	[0.02 s]
+0.0.Ht: Proofgrid shell started at 1693453@cadpc02(local) jg_1693356_cadpc02_1
 0.0.N: Requesting engine job to terminate
 0.0.Hp: Requesting engine job to terminate
-INFO (IPF144): 0: Initiating shutdown of proof [1.76 s]
-0.0.Hp: A trace with 1 cycles was found. [0.05 s]
-INFO (IPF055): 0.0.Hp: A counterexample (cex) with 1 cycles was found for the property "RISC_V_Core.ID_SB.sb_props._assert_2" in 1.90 s.
-INFO (IPF047): 0.0.Hp: The cover property "RISC_V_Core.ID_SB.sb_props._assert_2:precondition1" was covered in 1 cycles in 1.90 s.
-INFO (IPF047): 0.0.Hp: The cover property "RISC_V_Core.ID_SB.sb_props._assert_3:precondition1" was covered in 1 cycles in 1.90 s.
-INFO (IPF047): 0.0.Hp: The cover property "RISC_V_Core.ID_SB.sb_props._cover_13" was covered in 1 cycles in 1.90 s.
-0.0.Hp: All properties determined. [0.05 s]
-0.0.Ht: Proofgrid shell started at 54011@cadpc02(local) jg_53640_cadpc02_1
-0.0.Ht: Requesting engine job to terminate
+INFO (IPF144): 0: Initiating shutdown of proof [0.09 s]
+0: ProofGrid is temporarily paused because there are too many pending traces.
+0: ProofGrid is resuming to work after pausing for 0s. The amount of pending traces decreased.
+0.0.N: Trace Attempt  7	[0.03 s]
+0.0.N: A trace with 7 cycles was found. [0.07 s]
+INFO (IPF047): 0.0.N: The cover property "RISC_V_Core.pipe_props.COVER_FLOW_IF_TO_WB_4CYC_NO_STALL" was covered in 7 cycles in 0.00 s.
+0.0.N: Stopped processing property "RISC_V_Core.pipe_props.COVER_FLOW_IF_TO_WB_4CYC_NO_STALL"	[0.02 s].
+0.0.Hp: Interrupted (multi)
+0.0.Hp: All properties determined. [0.08 s]
 0.0.Ht: Preventing job from starting because proof is shutting down.
 0.0.Ht: Requesting engine job to terminate
-0.0.Bm: Proofgrid shell started at 54012@cadpc02(local) jg_53640_cadpc02_1
+0.0.Ht: Interrupted. [0.00 s]
+0.0.Bm: Proofgrid shell started at 1693454@cadpc02(local) jg_1693356_cadpc02_1
 0.0.Bm: Requesting engine job to terminate
 0.0.Bm: Preventing job from starting because proof is shutting down.
 0.0.Bm: Requesting engine job to terminate
-0.0.Mpcustom4: Proofgrid shell started at 54013@cadpc02(local) jg_53640_cadpc02_1
+0.0.Bm: Interrupted. [0.00 s]
+0.0.Mpcustom4: Proofgrid shell started at 1693455@cadpc02(local) jg_1693356_cadpc02_1
 0.0.Mpcustom4: Requesting engine job to terminate
 0.0.Mpcustom4: Preventing job from starting because proof is shutting down.
 0.0.Mpcustom4: Requesting engine job to terminate
-0.0.Oh: Proofgrid shell started at 54014@cadpc02(local) jg_53640_cadpc02_1
+0.0.Mpcustom4: Interrupted. [0.00 s]
+0.0.Oh: Proofgrid shell started at 1693456@cadpc02(local) jg_1693356_cadpc02_1
 0.0.Oh: Requesting engine job to terminate
 0.0.Oh: Preventing job from starting because proof is shutting down.
 0.0.Oh: Requesting engine job to terminate
-0.0.L: Proofgrid shell started at 54015@cadpc02(local) jg_53640_cadpc02_1
+0.0.Oh: Interrupted. [0.00 s]
+0.0.L: Proofgrid shell started at 1693457@cadpc02(local) jg_1693356_cadpc02_1
 0.0.L: Requesting engine job to terminate
 0.0.L: Preventing job from starting because proof is shutting down.
 0.0.L: Requesting engine job to terminate
-0.0.B: Proofgrid shell started at 54016@cadpc02(local) jg_53640_cadpc02_1
+0.0.L: Interrupted. [0.00 s]
+0.0.B: Proofgrid shell started at 1693458@cadpc02(local) jg_1693356_cadpc02_1
 0.0.B: Requesting engine job to terminate
 0.0.B: Preventing job from starting because proof is shutting down.
 0.0.B: Requesting engine job to terminate
-0.0.AM: Proofgrid shell started at 54017@cadpc02(local) jg_53640_cadpc02_1
+0.0.B: Interrupted. [0.00 s]
+0.0.AM: Proofgrid shell started at 1693459@cadpc02(local) jg_1693356_cadpc02_1
 0.0.AM: Requesting engine job to terminate
 0.0.AM: Preventing job from starting because proof is shutting down.
 0.0.AM: Requesting engine job to terminate
-0.0.N: Stopped processing property "RISC_V_Core.ID.du_props._assert_7:precondition1"	[0.32 s].
-0.0.N: Starting proof for property "RISC_V_Core.ID_SB.sb_props._assert_2"	[0.00 s].
-0.0.N: Trace Attempt  1	[0.00 s]
-0.0.N: Stopped processing property "RISC_V_Core.ID_SB.sb_props._assert_2"	[0.00 s].
-0.0.Hp: Exited with Success (@ 1.76 s)
-0: ProofGrid usable level: 0
-0.0.Ht: Interrupted. [0.00 s]
-0.0.Bm: Interrupted. [0.00 s]
-0.0.Mpcustom4: Interrupted. [0.00 s]
-0.0.Oh: Interrupted. [0.00 s]
-0.0.L: Interrupted. [0.00 s]
-0.0.B: Interrupted. [0.00 s]
 0.0.AM: Interrupted. [0.00 s]
-0.0.Ht: Exited with Success (@ 1.76 s)
-0.0.Bm: Exited with Success (@ 1.76 s)
-0.0.Mpcustom4: Exited with Success (@ 1.76 s)
-0.0.L: Exited with Success (@ 1.76 s)
-0.0.B: Exited with Success (@ 1.76 s)
-0.0.AM: Exited with Success (@ 1.76 s)
-0.0.N: All properties determined. [1.70 s]
-0.0.Oh: Exited with Success (@ 1.76 s)
-0.0.N: Exited with Success (@ 1.76 s)
+0.0.N: All properties determined. [0.07 s]
+0.0.Hp: Exited with Success (@ 0.13 s)
+0: ProofGrid usable level: 0
+0.0.Ht: Exited with Success (@ 0.13 s)
+0.0.Bm: Exited with Success (@ 0.13 s)
+0.0.Mpcustom4: Exited with Success (@ 0.13 s)
+0.0.Oh: Exited with Success (@ 0.13 s)
+0.0.L: Exited with Success (@ 0.13 s)
+0.0.B: Exited with Success (@ 0.13 s)
+0.0.AM: Exited with Success (@ 0.13 s)
+0.0.N: Exited with Success (@ 0.13 s)
 0: --------------------------------------------------------------
-ProofGrid Summary (utilization 21.48 %)
+ProofGrid Summary (utilization 14.19 %)
 --------------------------------------------------------------
      engines started                               :     9
      engine jobs started                           :     9
@@ -496,48 +490,48 @@ ProofGrid Summary (utilization 21.48 %)
     ------------------------------------------------------
     Engine  Pending     Running        Dead    Utilization
     ------------------------------------------------------
-      N        0.32        1.73        0.00       84.38 %
-     Hp        0.15        1.73        0.00       91.79 %
-     Ht        1.76        0.00        0.00        0.00 %
-     Bm        1.75        0.00        0.00        0.00 %
-    Mpcustom4        1.74        0.00        0.00        0.00 %
-     Oh        1.73        0.00        0.00        0.00 %
-      L        1.73        0.00        0.00        0.00 %
-      B        1.73        0.00        0.00        0.00 %
-     AM        1.72        0.00        0.00        0.00 %
-    all        1.40        0.38        0.00       21.48 %
+      N        0.08        0.08        0.00       51.38 %
+     Hp        0.07        0.08        0.00       50.52 %
+     Ht        0.09        0.00        0.00        0.00 %
+     Bm        0.12        0.00        0.00        0.00 %
+    Mpcustom4        0.12        0.00        0.00        0.00 %
+     Oh        0.12        0.00        0.00        0.00 %
+      L        0.12        0.00        0.00        0.00 %
+      B        0.12        0.00        0.00        0.00 %
+     AM        0.12        0.00        0.00        0.00 %
+    all        0.11        0.02        0.00       14.19 %
 
     Total time in state (seconds)
     -----------------------------------------
             Pending     Running        Dead  
     -----------------------------------------
-              12.64        3.46        0.00
+               0.97        0.16        0.00
 
-    Data read    : 96.94 kiB
-    Data written : 2.08 kiB
+    Data read    : 138.80 kiB
+    Data written : 1.74 kiB
 
 0: All pending notifications were processed.
-0: ProofGrid was paused 2 times for a total of 1.695 seconds
+0: ProofGrid was paused 1 times for a total of 0.039 seconds
 INFO (IPF059): 0: Completed proof on task: "<embedded>"
 
 ==============================================================
 SUMMARY
 ==============================================================
-           Properties Considered              : 35
-                 assertions                   : 14
-                  - proven                    : 13 (92.8571%)
+           Properties Considered              : 24
+                 assertions                   : 8
+                  - proven                    : 0 (0%)
                   - bounded_proven (user)     : 0 (0%)
                   - bounded_proven (auto)     : 0 (0%)
                   - marked_proven             : 0 (0%)
-                  - cex                       : 1 (7.14286%)
+                  - cex                       : 8 (100%)
                   - ar_cex                    : 0 (0%)
                   - undetermined              : 0 (0%)
                   - unknown                   : 0 (0%)
                   - error                     : 0 (0%)
-                 covers                       : 21
+                 covers                       : 16
                   - unreachable               : 0 (0%)
                   - bounded_unreachable (user): 0 (0%)
-                  - covered                   : 21 (100%)
+                  - covered                   : 16 (100%)
                   - ar_covered                : 0 (0%)
                   - undetermined              : 0 (0%)
                   - unknown                   : 0 (0%)
@@ -552,55 +546,44 @@ determined
 ==============================================================
     2024.06p002 64 bits for Linux64 3.10.0-1160.21.1.el7.x86_64
     Host Name: cadpc02.ee.columbia.edu
-    User Name: ww2766
-    Printed on: Tuesday, Dec16, 2025 11:30:14 PM EST
-    Working Directory: /homes/user/stud/fall25/ww2766/CSEEE6863/6863-RISCV-FV
+    User Name: rm4305
+    Printed on: Friday, Dec19, 2025 03:52:47 PM EST
+    Working Directory: /homes/user/stud/fall25/rm4305/6863-RISCV-FV
 
 
 ==============================================================
 RESULTS
 ==============================================================
 
----------------------------------------------------------------------------------------------------------------
-       Name                                                   |    Result    |  Engine  |  Bound  |  Time    
----------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+       Name                                                                  |    Result    |  Engine  |  Bound  |  Time    
+------------------------------------------------------------------------------------------------------------------------------
 
----[ <embedded> ]----------------------------------------------------------------------------------------------
-[1]   RISC_V_Core.ID.du_props._assert_2                            proven          N      Infinite    0.000 s      
-[2]   RISC_V_Core.ID.du_props._assert_2:precondition1              covered         N             1    0.905 s      
-[3]   RISC_V_Core.ID.du_props._assert_3                            proven          N      Infinite    0.000 s      
-[4]   RISC_V_Core.ID.du_props._assert_3:precondition1              covered         N             1    0.000 s      
-[5]   RISC_V_Core.ID.du_props._assert_4                            proven          Hp     Infinite    1.267 s      
-[6]   RISC_V_Core.ID.du_props._assert_4:precondition1              covered         N             1    0.001 s      
-[7]   RISC_V_Core.ID.du_props._assert_5                            proven          Hp     Infinite    1.446 s      
-[8]   RISC_V_Core.ID.du_props._assert_5:precondition1              covered         N             1    0.001 s      
-[9]   RISC_V_Core.ID.du_props._assert_6                            proven          Hp     Infinite    1.447 s      
-[10]  RISC_V_Core.ID.du_props._assert_6:precondition1              covered         N             1    0.001 s      
-[11]  RISC_V_Core.ID.du_props._assert_7                            proven          Hp     Infinite    1.575 s      
-[12]  RISC_V_Core.ID.du_props._assert_7:precondition1              covered         N             1    0.001 s      
-[13]  RISC_V_Core.ID.du_props._cover_8                             covered         N             1    0.905 s      
-[14]  RISC_V_Core.ID.du_props._cover_9                             covered         N             1    0.000 s      
-[15]  RISC_V_Core.ID.du_props._cover_10                            covered         N             1    0.001 s      
-[16]  RISC_V_Core.ID_SB.sb_props._assert_2                         cex             Hp            1    1.904 s      
-[17]  RISC_V_Core.ID_SB.sb_props._assert_2:precondition1           covered         Hp            1    1.904 s      
-[18]  RISC_V_Core.ID_SB.sb_props._assert_3                         proven          Hp     Infinite    1.575 s      
-[19]  RISC_V_Core.ID_SB.sb_props._assert_3:precondition1           covered         Hp            1    1.904 s      
-[20]  RISC_V_Core.ID_SB.sb_props._assert_4                         proven          Hp     Infinite    1.575 s      
-[21]  RISC_V_Core.ID_SB.sb_props._assert_4:precondition1           covered         N             1    0.905 s      
-[22]  RISC_V_Core.ID_SB.sb_props._assert_5                         proven          Hp     Infinite    1.575 s      
-[23]  RISC_V_Core.ID_SB.sb_props._assert_5:precondition1           covered         N             1    0.001 s      
-[24]  RISC_V_Core.ID_SB.sb_props._assert_6                         proven          Hp     Infinite    1.576 s      
-[25]  RISC_V_Core.ID_SB.sb_props._assert_6:precondition1           covered         N             1    0.000 s      
-[26]  RISC_V_Core.ID_SB.sb_props._assert_7                         proven          Hp     Infinite    1.576 s      
-[27]  RISC_V_Core.ID_SB.sb_props._assert_7:precondition1           covered         N             1    0.001 s      
-[28]  RISC_V_Core.ID_SB.sb_props._assert_8                         proven          Hp     Infinite    1.576 s      
-[29]  RISC_V_Core.ID_SB.sb_props._assert_8:precondition1           covered         N             1    0.001 s      
-[30]  RISC_V_Core.ID_SB.sb_props._assert_9                         proven          Hp     Infinite    1.576 s      
-[31]  RISC_V_Core.ID_SB.sb_props._assert_9:precondition1           covered         N             1    0.001 s      
-[32]  RISC_V_Core.ID_SB.sb_props._cover_10                         covered         N             1    0.905 s      
-[33]  RISC_V_Core.ID_SB.sb_props._cover_11                         covered         N             1    0.000 s      
-[34]  RISC_V_Core.ID_SB.sb_props._cover_12                         covered         N             1    0.001 s      
-[35]  RISC_V_Core.ID_SB.sb_props._cover_13                         covered         Hp            1    1.904 s      
+---[ <embedded> ]-------------------------------------------------------------------------------------------------------------
+[1]   RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL                           cex             N             1    0.089 s      
+[2]   RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL:precondition1             covered         N             1    0.089 s      
+[3]   RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D                         cex             N             1    0.001 s      
+[4]   RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D:precondition1           covered         N             1    0.001 s      
+[5]   RISC_V_Core.pipe_props.ASSERT_HOLD_ID_EX_ON_STALL                           cex             N             1    0.089 s      
+[6]   RISC_V_Core.pipe_props.ASSERT_HOLD_ID_EX_ON_STALL:precondition1             covered         N             1    0.089 s      
+[7]   RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL                          cex             N             1    0.001 s      
+[8]   RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL:precondition1            covered         N             1    0.089 s      
+[9]   RISC_V_Core.pipe_props.ASSERT_MAP_IF_TO_IFID                                cex             N             1    0.089 s      
+[10]  RISC_V_Core.pipe_props.ASSERT_MAP_IF_TO_IFID:precondition1                  covered         N             1    0.089 s      
+[11]  RISC_V_Core.pipe_props.ASSERT_MAP_ID_TO_IDEX                                cex             N             1    0.089 s      
+[12]  RISC_V_Core.pipe_props.ASSERT_MAP_ID_TO_IDEX:precondition1                  covered         N             1    0.089 s      
+[13]  RISC_V_Core.pipe_props.ASSERT_MAP_EX_TO_EXMEM                               cex             N             1    0.001 s      
+[14]  RISC_V_Core.pipe_props.ASSERT_MAP_EX_TO_EXMEM:precondition1                 covered         N             1    0.001 s      
+[15]  RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB                              cex             N             1    0.001 s      
+[16]  RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB:precondition1                covered         N             1    0.001 s      
+[17]  RISC_V_Core.pipe_props.COVER_PAST_VALID                                     covered         N             1    0.089 s      
+[18]  RISC_V_Core.pipe_props.COVER_STALL                                          covered         N             1    0.089 s      
+[19]  RISC_V_Core.pipe_props.COVER_STALL_D                                        covered         N             1    0.001 s      
+[20]  RISC_V_Core.pipe_props.COVER_IFID_UPD                                       covered         N             1    0.089 s      
+[21]  RISC_V_Core.pipe_props.COVER_IDEX_UPD                                       covered         N             1    0.089 s      
+[22]  RISC_V_Core.pipe_props.COVER_EXMEM_UPD                                      covered         N             1    0.001 s      
+[23]  RISC_V_Core.pipe_props.COVER_MEMWB_UPD                                      covered         N             1    0.001 s      
+[24]  RISC_V_Core.pipe_props.COVER_FLOW_IF_TO_WB_4CYC_NO_STALL                    covered         N             7    0.002 s      
 
 ==============================================================
 ASSUMPTIONS
@@ -609,5 +592,26 @@ ASSUMPTIONS
 -------------------------------------------------------------------------------
        Name    |  Expression  |  Location     |  Status      |  Dependencies                  
 -------------------------------------------------------------------------------
-[1]   <embedded>::RISC_V_Core.ID.du_props._assume_1  ID.du_props._assume_1  N/A temporary     
-[2]   <embedded>::RISC_V_Core.ID_SB.sb_props._assume_1  ID_SB.sb_props._assume_1  N/A temporary
+[<embedded>] % visualize -violation -property <embedded>::RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D -new_window
+INFO (IVS015): Setting Visualize task to "<embedded>".
+INFO (IVS008): Expanding analysis region to enable visualization of "<embedded>::RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D".
+cex
+[<embedded>] % visualize -violation -property <embedded>::RISC_V_Core.pipe_props.ASSERT_HOLD_ID_EX_ON_STALL -new_window
+INFO (IVS015): Setting Visualize task to "<embedded>".
+INFO (IVS008): Expanding analysis region to enable visualization of "<embedded>::RISC_V_Core.pipe_props.ASSERT_HOLD_ID_EX_ON_STALL".
+cex
+[<embedded>] % visualize -violation -property <embedded>::RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL -new_window
+INFO (IVS015): Setting Visualize task to "<embedded>".
+INFO (IVS008): Expanding analysis region to enable visualization of "<embedded>::RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL".
+cex
+[<embedded>] % visualize -violation -property <embedded>::RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB -new_window
+INFO (IVS015): Setting Visualize task to "<embedded>".
+INFO (IVS008): Expanding analysis region to enable visualization of "<embedded>::RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB".
+cex
+INFO (IPL005): Received request to exit from the console.
+INFO (IPL014): Waiting for the Tcl-thread to exit.
+INFO: Waiting for proof threads to stop...
+INFO: Proof threads stopped.
+INFO (IPL018): The peak resident set memory use for this session was 0.470 GB.
+INFO (IPL015): The Tcl-thread exited with status 0.
+INFO (IPL016): Exiting the analysis session with status 0.

@@ -1,0 +1,113 @@
+# ----------------------------------------
+# Jasper Version Info
+# tool      : Jasper 2024.06
+# platform  : Linux 4.18.0-553.89.1.el8_10.x86_64
+# version   : 2024.06p002 64 bits
+# build date: 2024.09.02 16:28:38 UTC
+# ----------------------------------------
+# started   : 2025-12-19 15:45:03 EST
+# hostname  : cadpc02.(none)
+# pid       : 1690621
+# arguments : '-label' 'session_0' '-console' '//127.0.0.1:34727' '-style' 'windows' '-data' 'AAAAxHicVYvLCYBAEEPfCoLNaAUWoRWILAqCP/xdtVQ7WbOKhw1kkplJDJCfzjlemPtTckMIv0fhpbwChfgv/xFfSEhpmTnkCzYaBm2V2IkNvXSUVqz6LuxY6S7nb4fmokQrWmp9OiblMzmrrscDF8IZIQ==' '-proj' '/homes/user/stud/fall25/rm4305/6863-RISCV-FV/jgproject/sessionLogs/session_0' '-init' '-hidden' '/homes/user/stud/fall25/rm4305/6863-RISCV-FV/jgproject/.tmp/.initCmds.tcl' 'temp_pipeline_structure_verification.tcl'
+
+Any disclosure about the Cadence Design Systems software or its use
+model to any third party violates the written Non-Disclosure Agreement
+between Cadence Design Systems, Inc. and the customer.
+
+THIS SOFTWARE CONTAINS CONFIDENTIAL INFORMATION AND TRADE SECRETS OF
+CADENCE DESIGN SYSTEMS, INC. USE, DISCLOSURE, OR REPRODUCTION IS
+PROHIBITED WITHOUT THE PRIOR EXPRESS WRITTEN PERMISSION OF CADENCE
+DESIGN SYSTEMS, INC.
+
+Copyright (C) 2000-2024 Cadence Design Systems, Inc. All Rights
+Reserved.  Unpublished -- rights reserved under the copyright laws of
+the United States.
+
+This product includes software developed by others and redistributed
+according to license agreement. See doc/third_party_readme.txt for
+further details.
+
+RESTRICTED RIGHTS LEGEND
+
+Use, duplication, or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c) (1) (ii) of the Rights in
+Technical Data and Computer Software clause at DFARS 252.227-7013 or
+subparagraphs (c) (1) and (2) of Commercial Computer Software -- Restricted
+Rights at 48 CFR 52.227-19, as applicable.
+
+
+                          Cadence Design Systems, Inc.
+                          2655 Seely Avenue
+                          San Jose, CA 95134
+                          Phone: 408.943.1234
+
+For technical assistance visit http://support.cadence.com.
+
+Jasper Apps Analysis Session - /homes/user/stud/fall25/rm4305/6863-RISCV-FV/jgproject/sessionLogs/session_0
+
+INFO: successfully checked out licenses "jasper_interactive" and "jasper_fao".
+INFO: reading configuration file "/user/stud/fall25/rm4305/.config/cadence/jasper.conf".
+% # ----------------------------------------
+% #  Copyright (c) 2017 Cadence Design Systems, Inc. All Rights
+% #  Reserved.  Unpublished -- rights reserved under the copyright 
+% #  laws of the United States.
+% # ----------------------------------------
+% 
+% # Analyze design under verification files
+% set ROOT_PATH      ./
+./
+% set RTL_PATH       ${ROOT_PATH}/src
+.//src
+% set PROP_PATH      ${ROOT_PATH}/properties
+.//properties
+% 
+% # Analyze the complete RTL needed for bypass verification
+% set RTL_FILES [lsort [glob -nocomplain ${RTL_PATH}/*.v]]
+./src/ALU.v ./src/RISC_V_Core.v ./src/bram.v ./src/bsram.v ./src/control_unit.v ./src/d_mem_interface.v ./src/decode.v ./src/decode_pipe.v ./src/execute.v ./src/execute_pipe.v ./src/fetch.v ./src/fetch_pipe.v ./src/i_mem_interface.v ./src/memory.v ./src/memory_pipe.v ./src/regFile.v ./src/stallControl.v ./src/writeback.v
+% if {[llength $RTL_FILES] == 0} {
+  error "No RTL files found under ${RTL_PATH}"
+}
+% analyze -sv $RTL_FILES
+WARNING (WCD032): Passing arguments to "analyze" as lists has been deprecated.
+    For message help, type "help -message WCD032".
+[-- (VERI-1482)] Analyzing Verilog file '/tools/cadence/jasper_2024.06p002/lib/verilog/packages/std/std.sv' into library 'std'
+[-- (VERI-1482)] Analyzing Verilog file './src/ALU.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/RISC_V_Core.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/bram.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/bsram.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/control_unit.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/d_mem_interface.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/decode.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/decode_pipe.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/execute.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/execute_pipe.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/fetch.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/fetch_pipe.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/i_mem_interface.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/memory.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/memory_pipe.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/regFile.v'
+[-- (VERI-1482)] Analyzing Verilog file './src/stallControl.v'
+[INFO (VERI-2561)] ./src/stallControl.v(70): undeclared symbol 'rs1_stall_detected', assumed default net type 'wire'
+[INFO (VERI-2561)] ./src/stallControl.v(74): undeclared symbol 'rs2_stall_detected', assumed default net type 'wire'
+[-- (VERI-1482)] Analyzing Verilog file './src/writeback.v'
+% 
+% # Analyze property bindings (includes individual .sva files)
+% analyze -sva \
+  ${PROP_PATH}/bind_pipeline_structure.sva
+[-- (VERI-1482)] Analyzing Verilog file './/properties/bind_pipeline_structure.sva'
+[INFO (VERI-1328)] .//properties/bind_pipeline_structure.sva(5): analyzing included file './/properties/pipeline_structure_properties.sv'
+[ERROR (VERI-1138)] .//properties/bind_pipeline_structure.sva(71): unexpected EOF
+[ERROR (VERI-9023)] .//properties/bind_pipeline_structure.sva(71): previous error is within an unterminated design unit
+Summary of errors detected:
+	[ERROR (VERI-1138)] .//properties/bind_pipeline_structure.sva(71): unexpected EOF
+	[ERROR (VERI-9023)] .//properties/bind_pipeline_structure.sva(71): previous error is within an unterminated design unit
+ERROR (ENL034): 2 errors detected in the design file(s).
+
+ERROR: problem encountered at line 20 in file temp_pipeline_structure_verification.tcl
+
+INFO (IPL005): Received request to exit from the console.
+INFO (IPL014): Waiting for the Tcl-thread to exit.
+INFO (IPL018): The peak resident set memory use for this session was 0.475 GB.
+INFO (IPL015): The Tcl-thread exited with status 0.
+INFO (IPL016): Exiting the analysis session with status 0.

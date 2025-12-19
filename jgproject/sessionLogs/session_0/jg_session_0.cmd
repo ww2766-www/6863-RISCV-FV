@@ -5,10 +5,10 @@
 # version   : 2024.06p002 64 bits
 # build date: 2024.09.02 16:28:38 UTC
 # ----------------------------------------
-# started   : 2025-12-16 23:30:10 EST
+# started   : 2025-12-19 15:52:45 EST
 # hostname  : cadpc02.(none)
-# pid       : 53640
-# arguments : '-label' 'session_0' '-console' '//127.0.0.1:42269' '-style' 'windows' '-data' 'AAAAonicY2RgYLCp////PwMYMD6A0Aw2jAyoAMRnQhUJbEChGRhYYZphSkAaOBh0GdIYChjKgGw9hiSGSiA7kaEYCOOBYqkMRQyZQPlMhmSgaAmQzmfIA6orAfJzwGYAAAbjEdY=' '-proj' '/homes/user/stud/fall25/ww2766/CSEEE6863/6863-RISCV-FV/jgproject/sessionLogs/session_0' '-init' '-hidden' '/homes/user/stud/fall25/ww2766/CSEEE6863/6863-RISCV-FV/jgproject/.tmp/.initCmds.tcl' 'bypass_verification.tcl'
+# pid       : 1693356
+# arguments : '-label' 'session_0' '-console' '//127.0.0.1:32791' '-style' 'windows' '-data' 'AAAAxHicVYvLCYBAEEPfCoLNaAUWoRWILAqCP/xdtVQ7WbOKhw1kkplJDJCfzjlemPtTckMIv0fhpbwChfgv/xFfSEhpmTnkCzYaBm2V2IkNvXSUVqz6LuxY6S7nb4fmokQrWmp9OiblMzmrrscDF8IZIQ==' '-proj' '/homes/user/stud/fall25/rm4305/6863-RISCV-FV/jgproject/sessionLogs/session_0' '-init' '-hidden' '/homes/user/stud/fall25/rm4305/6863-RISCV-FV/jgproject/.tmp/.initCmds.tcl' 'temp_pipeline_structure_verification.tcl'
 # ----------------------------------------
 #  Copyright (c) 2017 Cadence Design Systems, Inc. All Rights
 #  Reserved.  Unpublished -- rights reserved under the copyright 
@@ -29,7 +29,7 @@ analyze -sv $RTL_FILES
 
 # Analyze property bindings (includes individual .sva files)
 analyze -sva \
-  ${PROP_PATH}/binding.sva
+  ${PROP_PATH}/bind_pipeline_structure.sva
 
 # Elaborate the full core so both decode and stall units are instantiated
 elaborate -top RISC_V_Core
@@ -46,3 +46,7 @@ prove -all
 
 # Report proof results
 report
+visualize -violation -property <embedded>::RISC_V_Core.pipe_props.ASSERT_HOLD_IF_ID_ON_STALL_D -new_window
+visualize -violation -property <embedded>::RISC_V_Core.pipe_props.ASSERT_HOLD_ID_EX_ON_STALL -new_window
+visualize -violation -property <embedded>::RISC_V_Core.pipe_props.ASSERT_HOLD_EX_MEM_ON_STALL -new_window
+visualize -violation -property <embedded>::RISC_V_Core.pipe_props.ASSERT_MAP_MEM_TO_MEMWB -new_window
