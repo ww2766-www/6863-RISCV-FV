@@ -5,6 +5,7 @@
 `include "stall_bypass_properties.sv"
 `include "decode_bypass_properties.sv"
 `include "execute_bypass_properties.sv"
+`include "atomicity_properties.sv"
 
 bind stall_and_bypass_control_unit stall_bypass_properties sb_props (
     .clock               (clock),
@@ -59,6 +60,21 @@ bind execution_unit execute_bypass_properties #(
     .zero          (zero),
     .branch        (branch),
     .JALR_target   (JALR_target)
+);
+
+bind RISC_V_Core atomicity_properties #(
+    .DATA_WIDTH(DATA_WIDTH)
+) atomic_props (
+    .clock               (clock),
+    .reset               (reset),
+    .memRead_memory      (memRead_memory),
+    .regWrite_memory     (regWrite_memory),
+    .rd_memory           (rd_memory),
+    .memory_data_memory  (memory_data_memory),
+    .memRead_writeback   (memRead_writeback),
+    .regWrite_writeback  (regWrite_writeback),
+    .rd_writeback        (rd_writeback),
+    .write_data_writeback(write_data_writeback)
 );
 
 `endif
