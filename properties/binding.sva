@@ -1,0 +1,104 @@
+
+`ifndef BRISCV_PIPELINE_BINDINGS_SVA
+`define BRISCV_PIPELINE_BINDINGS_SVA
+
+`include "stall_bypass_properties.sv"
+`include "decode_bypass_properties.sv"
+`include "execute_bypass_properties.sv"
+`include "top_level_control_properties.sv"
+
+
+bind stall_and_bypass_control_unit stall_bypass_properties sb_props (
+    .clock               (clock),
+    .rs1                 (rs1),
+    .rs2                 (rs2),
+    .regwrite_execute    (regwrite_execute),
+    .regwrite_memory     (regwrite_memory),
+    .regwrite_writeback  (regwrite_writeback),
+    .rd_execute          (rd_execute),
+    .rd_memory           (rd_memory),
+    .rd_writeback        (rd_writeback),
+    .opcode_execute      (opcode_execute),
+    .rs1_data_bypass     (rs1_data_bypass),
+    .rs2_data_bypass     (rs2_data_bypass),
+    .stall_needed        (stall_needed)
+);
+
+bind decode_unit decode_bypass_properties #(
+    .DATA_WIDTH(DATA_WIDTH)
+) du_props (
+    .clock               (clock),
+    .reset               (reset),
+    .rs1_data_bypass     (rs1_data_bypass),
+    .rs2_data_bypass     (rs2_data_bypass),
+    .rs1_data            (rs1_data),
+    .rs2_data            (rs2_data),
+    .ALU_result_execute  (ALU_result_execute),
+    .ALU_result_memory   (ALU_result_memory),
+    .ALU_result_writeback(ALU_result_writeback)
+);
+
+bind execution_unit execute_bypass_properties #(
+    .DATA_WIDTH(DATA_WIDTH),
+    .ADDRESS_BITS(ADDRESS_BITS)
+) ex_props (
+    .clock         (clock),
+    .reset         (reset),
+
+    .stall         (stall),
+    .ALU_Operation (ALU_Operation),
+    .funct7        (funct7),
+    .funct3        (funct3),
+    .PC            (PC),
+    .ALU_ASrc      (ALU_ASrc),
+    .ALU_BSrc      (ALU_BSrc),
+    .branch_op     (branch_op),
+    .regRead_1     (regRead_1),
+    .regRead_2     (regRead_2),
+    .extend        (extend),
+
+    .ALU_result    (ALU_result),
+    .zero          (zero),
+    .branch        (branch),
+    .JALR_target   (JALR_target)
+);
+
+
+bind RISC_V_Core top_level_control_properties #(
+  .DATA_WIDTH(DATA_WIDTH),
+  .ADDRESS_BITS(ADDRESS_BITS)
+) top_ctrl_props (
+  .clock(clock),
+  .reset(reset),
+
+  // 这里的 stall 是 RISC_V_Core 内部 wire stall（hazard stall）
+  .stall(stall),
+
+  // ID(Decode)
+  .branch_op_decode       (branch_op_decode),
+  .memRead_decode         (memRead_decode),
+  .memWrite_decode        (memWrite_decode),
+  .regWrite_decode        (regWrite_decode),
+  .ALUOp_decode           (ALUOp_decode),
+  .operand_B_sel_decode   (operand_B_sel_decode),
+  .operand_A_sel_decode   (operand_A_sel_decode),
+  .next_PC_select_decode  (next_PC_select_decode),
+
+  // EX (ID/EX pipe outputs)
+  .branch_op_execute      (branch_op_execute),
+  .memRead_execute        (memRead_execute),
+  .memWrite_execute       (memWrite_execute),
+  .regWrite_execute       (regWrite_execute),
+  .ALUOp_execute          (ALUOp_execute),
+  .operand_B_sel_execute  (operand_B_sel_execute),
+  .operand_A_sel_execute  (operand_A_sel_execute),
+  .next_PC_select_execute (next_PC_select_execute),
+
+  // MEM (EX/MEM pipe outputs)
+  .memRead_memory         (memRead_memory),
+  .memWrite_memory        (memWrite_memory),
+  .regWrite_memory        (regWrite_memory),
+  .next_PC_select_memory  (next_PC_select_memory)
+);
+
+`endif
